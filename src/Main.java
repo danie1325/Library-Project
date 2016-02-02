@@ -5,9 +5,12 @@ public class Main {
 	
 	public static void main(String args[]){
 
+		//get ISBN #
+		String ISBN = getISBN();
+		
 		//figure out if the person is checking out a book or entering one into the database
 		if (getProgramUse() == 1){
-			String ISBN = getISBN();
+			
 		}
 		else{
 			//figure this shit out later
