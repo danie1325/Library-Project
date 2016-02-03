@@ -6,11 +6,11 @@ public class Main {
 	public static void main(String args[]){
 
 		//get ISBN #
-		String ISBN = getISBN();
+		int ISBN = getISBN();
 		
 		//figure out if the person is checking out a book or entering one into the database
 		if (getProgramUse() == 1){
-			
+			BookDatabase.registerBook(ISBN);
 		}
 		else{
 			//figure this shit out later
@@ -25,9 +25,13 @@ public class Main {
 		return programUse;
 	}
 	
-	public static String getISBN(){
+	public static int getISBN(){
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter the book's ISBN number");
-		return "";
+		String ISBNString = input.next();
+		String[] tokenizedISBN = ISBNString.split("-");
+		ISBNString = tokenizedISBN.toString();
+		int ISBN = Integer.parseInt(ISBNString);
+		return ISBN;
 	}
 }
