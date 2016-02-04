@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.Hashtable;
+
 public class BookDatabase {
 	static //create a hashmap
 	Hashtable bookDatabase = new Hashtable();
