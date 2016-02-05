@@ -5,9 +5,17 @@ import java.util.regex.*;
 
 public class Book {
 	
-	public final Pattern AUTHOR_PATTERN = Pattern.compile("<\"a itemprop=\"author\" href=\".*?\">(.*?)</a>");
-	
+	public final static Pattern TITLE_PATTERN = Pattern.compile("<h1 itemprop=\"name\">(.*?)</h1>"); //done
+	public final static Pattern AUTHOR_PATTERN = Pattern.compile("<\"a itemprop=\"author\" href=\".*?\">(.*?)</a>"); //done
+	public final static Pattern GENRE_PATTERN = Pattern.compile("<h2>Subjects>.*?<\"a itemprop=\"\" href=\".*?\">(.*?)</a>"); //done
 
+	//public final static Pattern RELEASE_DATE_PATTERN = Pattern.compile("<a href=\".*?\">(.*?)</a>"); //not done
+	public final static Pattern PUBLISHER_PATTERN = Pattern.compile("<\"a itemprop=\"publisher\"href=\".*?\">(.*?)</a>"); //done
+	//public final static Pattern BOOK_NUM_PATTERN = Pattern.compile("<a href=\".*?\">(.*?)</a>"); //not done
+	//public final static Pattern PAGES_PATTERN = Pattern.compile("<a href=\".*?\">(.*?)</a>");//not done
+	//public final static Pattern CHAPTERS_PATTERN = Pattern.compile("<a href=\".*?\">(.*?)</a>"); //not done
+	
+	
 	public Book(String title, String author, String publisher) {
 		String Booktitle = title;
 		String Bookauthor = author;
@@ -40,23 +48,48 @@ public class Book {
 
 
 	public static String[] getBookInfo(int ISBN){
-		String bookInfo[] = new String[8];
-		String html = getHTML("http://isbndb.com/search/all?query=" +  String.valueOf(ISBN));
-		
-		
-
-
-		 
-		/*index associatio
+		/*index association
 		 * 0 = title
 		 * 1 = author
 		 * 2 = genre
-		 * 3 = release date
-		 * 4 = publisher
+		 * 3 = publisher
+		 * 4 = release date
 		 * 5 = book # in series
 		 * 6 = pages
 		 * 7 = chapters
 		 */
+		String bookInfo[] = new String[4];
+		String html = getHTML("http://isbndb.com/search/all?query=" +  String.valueOf(ISBN));
+		
+		Matcher Title_Matcher = TITLE_PATTERN.matcher(html);
+		
+		if (Title_Matcher.find()) {
+			bookInfo[0] = Title_Matcher.group(1);
+		}
+		
+		
+		Matcher Author_Matcher = AUTHOR_PATTERN.matcher(html);
+		
+		if (Author_Matcher.find()) {
+			bookInfo[1] = Author_Matcher.group(1);
+		}
+		
+		Matcher Genre_Matcher = GENRE_PATTERN.matcher(html);
+		
+		if (Genre_Matcher.find()) {
+			bookInfo[2] = Genre_Matcher.group(1);
+		}
+		
+		Matcher Publisher_Matcher = PUBLISHER_PATTERN.matcher(html);
+		
+		if (Publisher_Matcher.find()) {
+			bookInfo[3] = Publisher_Matcher.group(1);
+		}
+		
+
+
+		 
+		
 		return bookInfo;
 	}
 
