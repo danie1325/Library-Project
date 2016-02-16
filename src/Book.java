@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.regex.*;
 
 public class Book {
-	
+	//find some of this info later
 	public final static Pattern TITLE_PATTERN = Pattern.compile("<h1 itemprop=\"name\">(.*?)</h1>"); //done
 	public final static Pattern AUTHOR_PATTERN = Pattern.compile("<\"a itemprop=\"author\" href=\".*?\">(.*?)</a>"); //done
 	public final static Pattern GENRE_PATTERN = Pattern.compile("<h2>Subjects>.*?<\"a itemprop=\"\" href=\".*?\">(.*?)</a>"); //done
