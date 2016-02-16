@@ -16,10 +16,11 @@ public class Book {
 	//public final static Pattern CHAPTERS_PATTERN = Pattern.compile("<a href=\".*?\">(.*?)</a>"); //not done
 	
 	
-	public Book(String title, String author, String publisher) {
-		String Booktitle = title;
-		String Bookauthor = author;
-		String Bookpublisher = author;
+	public Book(String title, String author, String publisher, String genre) {
+		String bookTitle = title;
+		String bookAuthor = author;
+		String bookPublisher = author;
+		String bookGenre = genre;
 	}
 
 	public Book(String[] bookInfo) {
@@ -27,10 +28,11 @@ public class Book {
 	}
 
 	//constructor for one book
-	public static Book book (int ISBN){
+	public static Book createBook(int ISBN){
 		//needs to get author, publisher, and title of book from online
 		//String bookURL = getBookURL(ISBN);
-		return new Book(getBookInfo(ISBN));
+		Book book = new Book((getBookInfo(ISBN))[0], (getBookInfo(ISBN))[1], (getBookInfo(ISBN))[2], (getBookInfo(ISBN))[3]);
+		return book;
 	}
 
 	public static String getHTML(String url) {
