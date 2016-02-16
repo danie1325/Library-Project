@@ -9,8 +9,8 @@ public class BookDatabase {
 	 */
 
 	public static void registerBook(int ISBN){
-		
-		bookDatabase.put(ISBN, Book.book(ISBN)); //is this correct?
+		Book book = Book.createBook(ISBN);
+		bookDatabase.put(ISBN, book); 
 	}
 
 	
