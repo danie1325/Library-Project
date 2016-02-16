@@ -9,11 +9,27 @@ public class Main {
 		int ISBN = getISBN();
 		
 		//figure out if the person is checking out a book or entering one into the database
-		if (getProgramUse() == 1){
+		//person is registering a new book in the book database
+		if (getProgramUse() == 0){
 			BookDatabase.registerBook(ISBN);
 		}
-		else{
+		//person is checking out a book
+		else if(getProgramUse() == 1){
 			//figure this shit out later!!
+		}
+		//person did not enter a 0 or 1
+		else{
+			System.out.println("Please only enter a '0' or '1'");
+			////////MAKE FOR LOOP LATER BUT WHATEVER
+			//person is registering a new book in the book database
+			if (getProgramUse() == 0){
+				BookDatabase.registerBook(ISBN);
+			}
+			//person is checking out a book
+			else if(getProgramUse() == 1){
+				//figure this shit out later!!
+			}
+			
 		}
 
 	}
