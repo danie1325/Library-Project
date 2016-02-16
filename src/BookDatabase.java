@@ -1,6 +1,6 @@
 import java.util.*;
 public class BookDatabase {
-	static //create a hashmap
+	static //create a hashmap called book database
 	Hashtable bookDatabase = new Hashtable();
 
 	/*make book object and have that be stored in the hashmap
