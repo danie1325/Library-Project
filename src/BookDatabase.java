@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class BookDatabase {
     //create a hashmap called book database 
-	static Hashtable bookDatabase = new Hashtable();
+	static Hashtable<Integer, Book> bookDatabase = new Hashtable();
 
 	/*make book object and have that be stored in the hashmap
 	 * book object stores author, title, publisher, review, etc
@@ -18,8 +18,10 @@ public class BookDatabase {
 	}
 	
 	public static void writeFile(Hashtable h) {
+		Set key = h.keySet();
+		String[] keyArray = (String[]) key.toArray(new String[key.size()]);
 		for (int i = 0; i < h.size(); i++) {
-			Set k = h.keySet();
+			String k = keyArray[i];
 			Object v = h.get(i);
 			try {
 				PrintWriter out = new PrintWriter("Database.txt");
