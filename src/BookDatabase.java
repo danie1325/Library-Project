@@ -17,12 +17,12 @@ public class BookDatabase {
 		bookDatabase.put(ISBN, book); 
 	}
 	
-	public static void writeFile(Hashtable h) {
-		Set<String> key = h.keySet();
-		String[] keyArray = key.toArray(new String[key.size()]);
+	public static void writeFile(Hashtable<Integer, Book> h) {
+		Set<Integer> key = h.keySet();
+		Integer[] keyArray = key.toArray(new Integer[key.size()]);
 		for (int i = 0; i < h.size(); i++) {
-			String k = keyArray[i];
-			Object v = h.get(i);
+			Integer k = keyArray[i];
+			Book v = h.get(i);
 			try {
 				PrintWriter out = new PrintWriter("Database.txt");
 				out.println("ISBN is " + k);
