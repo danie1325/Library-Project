@@ -18,8 +18,8 @@ public class BookDatabase {
 	}
 	
 	public static void writeFile(Hashtable h) {
-		Set key = h.keySet();
-		String[] keyArray = (String[]) key.toArray(new String[key.size()]);
+		Set<String> key = h.keySet();
+		String[] keyArray = key.toArray(new String[key.size()]);
 		for (int i = 0; i < h.size(); i++) {
 			String k = keyArray[i];
 			Object v = h.get(i);
